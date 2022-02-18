@@ -1,0 +1,28 @@
+{
+  "name": "bootcamp_squad_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leocroce/Bootcamp_Squad_3.git"
+  },
+  "keywords": ["API RESTful", "NodeJs"],
+  "author": "Squad 3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leocroce/Bootcamp_Squad_3/issues"
+  },
+  "homepage": "https://github.com/Leocroce/Bootcamp_Squad_3#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.16.1"
+  }
+}
