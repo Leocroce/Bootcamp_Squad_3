@@ -1,1 +1,1 @@
-ECHO est  ativado.
+require("dotenv/config");
