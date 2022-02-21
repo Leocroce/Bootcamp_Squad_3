@@ -53,7 +53,7 @@ module.exports = class BootcampController{
 
         const bootcamp = {
             name: req.body.name,
-            workload: req.body.worload,
+            workload: req.body.workload,
             modality: req.body.modality
         }
 
