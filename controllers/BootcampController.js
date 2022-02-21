@@ -14,12 +14,12 @@ module.exports = class BootcampController{
         const teacher = await Teacher.findOne({where: {id: bootcamp.TeacherId}})
 
         if(!teacher){
-            res.status(401).json({message: `bootcamp-invalido-professor-${bootcamp.TeacherId}-sem-registro`})
+            res.status(402).json({message: `bootcamp-invalido-professor-${bootcamp.TeacherId}-sem-registro`})
             return
         }
 
         await Bootcamp.create(bootcamp)
-        res.status(202).json({message: `bootcamp-${bootcamp.name}-criado`})
+        res.status(201).json({message: `bootcamp-${bootcamp.name}-criado`})
 
     }
 
@@ -28,11 +28,22 @@ module.exports = class BootcampController{
         const teacher = await Teacher.findOne({include: Bootcamp, where:{id:id}})
 
         if(!teacher){
-            res.status(401).json({message: 'professor-parametro-inconsistente'})
+            res.status(402).json({message: 'professor-parametro-inconsistente'})
             return 
         }
 
-        res.status(201).json({teacher: teacher.get({plain: true})})
+        res.status(200).json({teacher: teacher.get({plain: true})})
+    }
+
+    static async listBootcamp(req, res){
+        const bootcamp = await Bootcamp.findAll({raw: true})
+
+        if(!bootcamp){
+            res.status(402).json({message: 'bootcamp-inexistente'})
+            return
+        }
+
+        res.status(200).json(bootcamp)
     }
 
     static async listUpdateBootcamp(req, res) {
