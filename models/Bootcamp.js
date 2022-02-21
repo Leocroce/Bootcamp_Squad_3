@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../db/conn');
-const Student = require('./Student')
+const Teacher = require('./Teacher')
 
 const Bootcamp = db.define('Bootcamp', {
     name: {
@@ -18,7 +18,7 @@ const Bootcamp = db.define('Bootcamp', {
 })
 
 
-Bootcamp.hasMany(Student)
-Student.belongsTo(Bootcamp)
+Teacher.hasMany(Bootcamp)
+Bootcamp.belongsTo(Teacher)
 
 module.exports = Bootcamp
