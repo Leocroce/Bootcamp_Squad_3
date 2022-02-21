@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const db = require('../db/conn');
+const Student = require('./Student')
 
 const Bootcamp = db.define('Bootcamp', {
     name: {
