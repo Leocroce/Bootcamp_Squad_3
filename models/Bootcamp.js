@@ -16,4 +16,8 @@ const Bootcamp = db.define('Bootcamp', {
     }
 })
 
+
+Bootcamp.hasMany(Student)
+Student.belongsTo(Bootcamp)
+
 module.exports = Bootcamp
