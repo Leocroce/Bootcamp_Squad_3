@@ -18,8 +18,8 @@ app.use('/teachers', teacherRoutes)
 //app.use('/bootcamps', bootcampRoutes)
 
 conn
-//.sync()
-.sync({ force: true })
+.sync()
+//.sync({ force: true })
 .then(() => {
     app.listen(3000)
 }).catch((err) => console.log(err))
