@@ -76,6 +76,11 @@ module.exports = class BootcampController{
     static async removeBootcamp(req,res) {
         const id = req.body.id
 
+        if(!id) {
+            res.status(402).json({message: 'id-parametro-inconsistente'})
+            return
+        }
+
         await Bootcamp.destroy({where: {id:id}})
         res.status(200).json({message: `bootcamp-${id}-deletado`})
     }
