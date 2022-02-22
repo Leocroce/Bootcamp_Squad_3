@@ -2,6 +2,7 @@ const res = require('express/lib/response')
 const Student = require('../models/Student')
 const Bootcamp = require('../models/Bootcamp')
 const Teacher = require('../models/Teacher')
+
 module.exports = class TeacherController{
 
     static async createTeacher(req, res){
@@ -29,7 +30,7 @@ module.exports = class TeacherController{
             return
         }
 
-        res.status(202).json(teacher)
+        res.status(200).json(teacher)
     }
 
     static async showTeacherRelations(req, res) {
@@ -40,9 +41,8 @@ module.exports = class TeacherController{
             return
         }
     
-        res.status(202).json(teacher)
+        res.status(200).json(teacher)
     }
-
 
     static async listUpdateTeacher(req, res) {
         const id = req.params.id
@@ -50,11 +50,11 @@ module.exports = class TeacherController{
         const teacher = await Teacher.findOne({ where: {id:id} })
 
         if(!teacher) {
-            res.status(406).json({ message: 'parametro-teacher-inconsistente'})
+            res.status(402).json({ message: 'parametro-teacher-inconsistente'})
             return
         }
 
-        res.status(201).json(teacher)
+        res.status(200).json(teacher)
     }
 
     static async sendUpdateTeacher(req, res) {
@@ -86,6 +86,6 @@ module.exports = class TeacherController{
 
         await Teacher.destroy({ where: {id:id} })
 
-        res.status(202).json({ message: `teacher-${id}-removido`})
+        res.status(200).json({ message: `teacher-${id}-removido`})
     }
 }

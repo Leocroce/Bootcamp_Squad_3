@@ -16,7 +16,7 @@ module.exports = class StudentController{
         const bootcamp = await Bootcamp.findOne({where: {id: student.BootcampId}})
 
         if(!bootcamp){
-            res.status(401).json({message: `aluno-inválido-bootcamp-${student.BootcampId}-sem-registro`})
+            res.status(402).json({message: `aluno-inválido-bootcamp-${student.BootcampId}-sem-registro`})
         }
 
         await Student.create(student)
@@ -28,7 +28,7 @@ module.exports = class StudentController{
         const student = await Student.findAll({raw:true})  
 
         if(!student){
-            res.status(401).json({message: 'lista-alunos-nula'})
+            res.status(402).json({message: 'lista-alunos-nula'})
             return
         }
 
@@ -41,7 +41,7 @@ module.exports = class StudentController{
         const bootcamp = await Bootcamp.findOne({where:{id:id}, include: Student})
 
         if(!bootcamp){
-            res.status(401).json({message: 'alunos-inválidos-bootcamp'})
+            res.status(402).json({message: 'alunos-inválidos-bootcamp'})
             return
         }
 
@@ -54,7 +54,7 @@ module.exports = class StudentController{
         const bootcamp = await Bootcamp.findOne({where:{id:id}, include: [{model: Student, where:{grade:{[Op.gte]:7}}}]})
 
         if(!bootcamp){
-            res.status(401).json({message: 'alunos-inválidos-bootcamp'})
+            res.status(402).json({message: 'alunos-inválidos-bootcamp'})
             return
         }
 
@@ -67,7 +67,7 @@ module.exports = class StudentController{
         const bootcamp = await Bootcamp.findOne({where:{id:id}, include: [{model: Student, where:{grade:{[Op.lt]:7}}}]})
 
         if(!bootcamp){
-            res.status(401).json({message: 'alunos-inválidos-bootcamp'})
+            res.status(402).json({message: 'alunos-inválidos-bootcamp'})
             return
         }
 
@@ -101,7 +101,7 @@ module.exports = class StudentController{
         const bootcamp = await Bootcamp.findOne({where: {id: student.BootcampId}})
 
         if(!bootcamp){
-            res.status(401).json({message: `aluno-inválido-bootcamp-${student.BootcampId}-sem-registro`})
+            res.status(402).json({message: `aluno-inválido-bootcamp-${student.BootcampId}-sem-registro`})
         }
 
         await Student.update(student, {where: {id:id}})
@@ -113,7 +113,7 @@ module.exports = class StudentController{
         const id = req.body.id
 
         if(!id){
-            res.status(401).json({message: `aluno-parâmetro-nulo`})
+            res.status(402).json({message: `aluno-parâmetro-nulo`})
             return
         }
 
