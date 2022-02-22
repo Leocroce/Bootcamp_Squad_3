@@ -62,6 +62,11 @@ module.exports = class BootcampController{
     static async updateBootcamp(req,res){
         const id = req.body.id
 
+        if(!id) {
+            res.status(402).json({message: 'id-parametro-inconsistente'})
+            return
+        }
+
         const bootcamp = {
             name: req.body.name,
             workload: req.body.workload,
