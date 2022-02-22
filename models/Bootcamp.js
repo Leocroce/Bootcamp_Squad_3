@@ -22,3 +22,4 @@ Teacher.hasMany(Bootcamp)
 Bootcamp.belongsTo(Teacher)
 
 module.exports = Bootcamp
+
