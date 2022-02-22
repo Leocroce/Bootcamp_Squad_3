@@ -13,3 +13,4 @@ router.patch('/update', StudentController.updateStudent)
 router.delete('/delete', StudentController.deleteStudent)
 
 module.exports = router
+

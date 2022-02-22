@@ -32,7 +32,7 @@ module.exports = class StudentController{
             return
         }
 
-        res.status(200).json({student: student.get({plain: true})})
+        res.status(200).json(student)
     }
 
     static async showStudents(req, res) {
@@ -84,7 +84,7 @@ module.exports = class StudentController{
             return
         }
 
-        res.status(200).json(task)
+        res.status(200).json(student)
     }
     //UPDATE
     static async updateStudent(req, res){
@@ -95,7 +95,7 @@ module.exports = class StudentController{
             email: req.body.email,
             phone: req.body.phone,
             grade: req.body.grade,
-            BootcampId: req.body.UserId
+            BootcampId: req.body.BootcampId
         }
 
         const bootcamp = await Bootcamp.findOne({where: {id: student.BootcampId}})
@@ -128,4 +128,5 @@ module.exports = class StudentController{
         res.status(200).json({message: `aluno-${id}-removido-banco`})
     }
 }
+
 

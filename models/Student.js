@@ -16,7 +16,7 @@ const Student = db.define('Student', {
         allowNull: false
     },
     grade:{
-        type: DataTypes.NUMBER,
+        type: DataTypes.DECIMAL(3,1),
         allowNull: false
     }
 })
@@ -25,3 +25,4 @@ Bootcamp.hasMany(Student)
 Student.belongsTo(Bootcamp)
 
 module.exports = Student;
+
