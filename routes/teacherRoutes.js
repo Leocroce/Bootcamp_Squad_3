@@ -10,4 +10,3 @@ router.patch('/edit', TeacherController.sendUpdateTeacher)
 router.delete('/remove', TeacherController.removeTeacher)
 
 module.exports = router
-
