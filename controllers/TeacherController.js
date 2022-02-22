@@ -1,3 +1,6 @@
+const res = require('express/lib/response')
+const Student = require('../models/Student')
+const Bootcamp = require('../models/Bootcamp')
 const Teacher = require('../models/Teacher')
 module.exports = class TeacherController{
 
@@ -28,6 +31,18 @@ module.exports = class TeacherController{
 
         res.status(202).json(teacher)
     }
+
+    static async showTeacherRelations(req, res) {
+        const teacher = await Teacher.findAll({ include: [ {model: Bootcamp, include: [Student] }] })
+
+        if(!teacher) {
+            res.status(402).json({ message: `listar-professor-parametro-nulo`})
+            return
+        }
+    
+        res.status(202).json(teacher)
+    }
+
 
     static async listUpdateTeacher(req, res) {
         const id = req.params.id
