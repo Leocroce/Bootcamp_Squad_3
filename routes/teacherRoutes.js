@@ -5,6 +5,7 @@ const TeacherController = require ('../controllers/TeacherController')
 
 router.post('/add',TeacherController.createTeacher)
 router.get('/', TeacherController.showTeacher)
+router.get('/relations', TeacherController.showTeacherRelations)
 router.get('/edit/:id', TeacherController.listUpdateTeacher)
 router.patch('/edit', TeacherController.sendUpdateTeacher)
 router.delete('/remove', TeacherController.removeTeacher)
