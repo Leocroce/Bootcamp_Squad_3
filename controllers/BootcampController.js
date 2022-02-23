@@ -86,6 +86,13 @@ module.exports = class BootcampController{
             return
         }
 
+        const bootcamp = await Bootcamp.findOne({ where: {id:id} })
+
+        if(!bootcamp) {
+            res.status(402).json({ message: 'id-parametro-nulo'})
+            return
+        }
+        
         await Bootcamp.destroy({where: {id:id}})
         res.status(200).json({message: `bootcamp-${id}-deletado`})
     }
