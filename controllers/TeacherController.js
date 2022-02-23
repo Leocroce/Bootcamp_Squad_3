@@ -80,6 +80,13 @@ module.exports = class TeacherController{
         const id = req.body.id
 
         if(!id) {
+            res.status(402).json({ message: 'teacher-id-parametros-inconsistentes'})
+            return
+        }
+
+        const teacher = await Teacher.findOne({ where: {id:id} })
+
+        if(!teacher) {
             res.status(402).json({ message: 'teacher-id-parametros-nulo'})
             return
         }
