@@ -59,21 +59,33 @@ module.exports = class TeacherController{
 
     static async sendUpdateTeacher(req, res) {
         const id = req.body.id
+
+        if(!id) {
+            res.status(402).json({message: 'id-parametro-nulo'})
+            return
+        }
+
+        const teacherId = await Teacher.findOne({ where: {id:id} })
+
+        if(!teacherId) {
+            res.status(402).json({ message: 'id-parametro-inconsistente'})
+        }
+
         const teacher = {
             name: req.body.name,
             email: req.body.email,
             phone: req.body.phone,
             disciplines: req.body.disciplines
         }
-
-        await Teacher.update(teacher, { where: {id:id} })
-
+        
         if(!teacher) {
             res.status(402).json({ message: 'teacher-parametros-null'})
             return
         }
+        
+        await Teacher.update(teacher, { where: {id:id} })
 
-        res.status(200).json({ message: `usuario-${teacher.name}-atualizado`})
+        res.status(200).json({ message: `teacher-${teacher.name}-atualizado`})
     }
 
     static async removeTeacher(req, res) {
